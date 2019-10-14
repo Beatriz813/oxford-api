@@ -83,7 +83,7 @@ module.exports = function (ctx) {
     devServer: {
       // https: true,
       // port: 4430,
-      open: true, // opens browser window automatically
+      open: true // opens browser window automatically
       // allowedHosts: [
       //   'https://od-api.oxforddictionaries.com'
       // ]

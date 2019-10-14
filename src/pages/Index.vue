@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="col-12">
     <SearchSection/>
   </q-page>
 </template>
