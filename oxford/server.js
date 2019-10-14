@@ -30,14 +30,15 @@ app.get('/:campo/:palavra', (req, res) => {
       })
       resp.on('end', () => {
           body = JSON.parse(body)
-          let resposta = {}
-          // res.end(Buffer.from(body))
-          // console.log(body.results)
-          body.results.forEach(resultados => {
-            if (resultados.lexicalEntries) {
-              console.log(resultados.lexicalEntries.map(conteudo => conteudo.entries))
-            }
+          let resposta = []
+          let entradasLexicais = []
+          entradasLexicais = body.results.filter(elemento => elemento.lexicalEntries.length > 0)  // Só vai retornar os objetos com a propriedade lexicalEntries
+          entradasLexicais.forEach(resultados => {
+            resultados.lexicalEntries.forEach(entradas => {
+              resposta = resposta.concat(entradas.entries)
+            })
           })
+          res.end(JSON.stringify(resposta))
           body = ''
       })
       resp.on('error', (e) => {
